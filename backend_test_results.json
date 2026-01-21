@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "tests_run": 14,
+    "tests_passed": 14,
+    "success_rate": 100.0
+  },
+  "results": [
+    {
+      "test": "API Health Check",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"message\": \"Tailzyai API is running\",\n  \"status\": \"healthy\"\n}...",
+      "timestamp": "2026-01-21T13:41:12.733940"
+    },
+    {
+      "test": "User Signup",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjEyN2I3MjQtMDY0YS00MWViLWIwMzktMWFlYjQwNWYwY2U3IiwiZXhwIjoxNzcxNTk0ODczfQ.h9_zPIK0wrNM9q4JbjChdZQYR0QcyHMNx30iDac5gDE\",\n  \"user\": {\n...",
+      "timestamp": "2026-01-21T13:41:13.038051"
+    },
+    {
+      "test": "User Signup for Login Test",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZTg0M2I4Y2QtZTU5MC00NjFiLTg1ZDgtZTVhNGRmMjI2MGM4IiwiZXhwIjoxNzcxNTk0ODczfQ.r0hfR1hurmc1wQyf7-QbWXUrVq2ChjikO3NCJPUewaY\",\n  \"user\": {\n...",
+      "timestamp": "2026-01-21T13:41:13.306806"
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZTg0M2I4Y2QtZTU5MC00NjFiLTg1ZDgtZTVhNGRmMjI2MGM4IiwiZXhwIjoxNzcxNTk0ODczfQ.r0hfR1hurmc1wQyf7-QbWXUrVq2ChjikO3NCJPUewaY\",\n  \"user\": {\n...",
+      "timestamp": "2026-01-21T13:41:13.580546"
+    },
+    {
+      "test": "Create Pet",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n  \"user_id\": \"e843b8cd-e590-461b-85d8-e5a4df2260c8\",\n  \"name\": \"Buddy\",\n  \"species\": \"dog\",\n  \"breed\": \"Golden Retriever\",\n  \"dob\": \"2020-01-15\",\n  \"p...",
+      "timestamp": "2026-01-21T13:41:13.622951"
+    },
+    {
+      "test": "Get Pets",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n    \"user_id\": \"e843b8cd-e590-461b-85d8-e5a4df2260c8\",\n    \"name\": \"Buddy\",\n    \"species\": \"dog\",\n    \"breed\": \"Golden Retriever\",\n    \"dob\": \"2...",
+      "timestamp": "2026-01-21T13:41:13.701469"
+    },
+    {
+      "test": "Create Activity",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"9447742c-206a-4a81-ae22-4f1d14be2b94\",\n  \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n  \"type\": \"Walk\",\n  \"description\": \"Morning walk in the park\",\n  \"date\": \"2025-01-15\",\n  \"notes\": ...",
+      "timestamp": "2026-01-21T13:41:13.755535"
+    },
+    {
+      "test": "Get Activities",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"9447742c-206a-4a81-ae22-4f1d14be2b94\",\n    \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n    \"type\": \"Walk\",\n    \"description\": \"Morning walk in the park\",\n    \"date\": \"2025-01-15...",
+      "timestamp": "2026-01-21T13:41:13.804758"
+    },
+    {
+      "test": "Create Health Record",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"48e4515a-548d-4d2f-a2ec-d8254ae31091\",\n  \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n  \"type\": \"Vaccination\",\n  \"description\": \"Annual rabies vaccination\",\n  \"date\": \"2025-01-15\",\n  \"...",
+      "timestamp": "2026-01-21T13:41:13.848202"
+    },
+    {
+      "test": "Get Health Records",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"48e4515a-548d-4d2f-a2ec-d8254ae31091\",\n    \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n    \"type\": \"Vaccination\",\n    \"description\": \"Annual rabies vaccination\",\n    \"date\": \"20...",
+      "timestamp": "2026-01-21T13:41:13.886712"
+    },
+    {
+      "test": "Create Journal Entry",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"8f2961b4-2822-4bad-b6c2-c6e71a208b23\",\n  \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n  \"content\": \"Buddy had a great day today. He played fetch for hours and seemed very happy.\",\n  \"m...",
+      "timestamp": "2026-01-21T13:41:13.940352"
+    },
+    {
+      "test": "Get Journal Entries",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"8f2961b4-2822-4bad-b6c2-c6e71a208b23\",\n    \"pet_id\": \"ab287f75-5529-409f-aba9-d142d70287c4\",\n    \"content\": \"Buddy had a great day today. He played fetch for hours and seemed very hap...",
+      "timestamp": "2026-01-21T13:41:13.979569"
+    },
+    {
+      "test": "Send Chat Message",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"role\": \"assistant\",\n  \"content\": \"Based on the recent health record, Buddy, your Golden Retriever, seems to be in good health. He had his annual rabies vaccination on January 15, 2025, and there ...",
+      "timestamp": "2026-01-21T13:41:18.276872"
+    },
+    {
+      "test": "Get Chat History",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"role\": \"user\",\n    \"content\": \"How is my pet's health based on recent records?\",\n    \"timestamp\": \"2026-01-21T13:41:18.222634+00:00\"\n  },\n  {\n    \"role\": \"assistant\",\n    \"content\": \"Based ...",
+      "timestamp": "2026-01-21T13:41:18.335171"
+    }
+  ]
+}
