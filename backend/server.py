@@ -141,6 +141,11 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
     except Exception as e:
         raise HTTPException(status_code=401, detail="Invalid token")
 
+# Health check route
+@api_router.get("/")
+async def root():
+    return {"message": "Tailzyai API is running", "status": "healthy"}
+
 # Auth routes
 @api_router.post("/auth/signup", response_model=TokenResponse)
 async def signup(user: UserSignup):
