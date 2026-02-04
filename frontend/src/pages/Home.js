@@ -242,7 +242,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{/* Activity Dialog */}
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
-                      <Button className="w-full justify-start rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
+                      <Button className="w-full justify-center rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
                         <ActivityIcon className="w-5 h-5 mr-2" />
                         Add Activity
                       </Button>
