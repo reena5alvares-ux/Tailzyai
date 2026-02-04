@@ -605,12 +605,12 @@ export default function Home() {
                   <CalendarIcon className="w-5 h-5 text-primary" />
                   Calendar
                 </h3>
-                <div className="w-full max-w-[400px]">
+                <div className="w-full max-w-[480px]">
                   <Calendar
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  className="rounded-xl border-2 border-orange-100"
+                  className="rounded-xl border-2 border-orange-100 text-base"
                   modifiers={{
                     hasEntries: (date) => dateHasEntries(date)
                   }}
