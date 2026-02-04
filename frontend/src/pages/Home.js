@@ -648,13 +648,13 @@ export default function Home() {
               </div>
 
               {/* Quick Actions - Vertical Layout on Right */}
-              <div className="flex flex-col gap-3 lg:ml-8">
-                <h3 className="text-xl font-heading font-bold mb-1">Quick Actions</h3>
+              <div className="flex flex-col gap-2 sm:gap-3 flex-shrink-0">
+                <h3 className="text-lg sm:text-xl font-heading font-bold mb-1 hidden sm:block">Quick Actions</h3>
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
-                      <Button className="w-40 justify-center rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
-                        <ActivityIcon className="w-5 h-5 mr-2" />
-                        Activity
+                      <Button className="w-28 sm:w-40 justify-center rounded-full bg-secondary hover:bg-secondary/90 text-white h-10 sm:h-12 text-sm" data-testid="add-activity-button">
+                        <ActivityIcon className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-2" />
+                        <span className="hidden sm:inline">Activity</span>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="rounded-[2rem]">
