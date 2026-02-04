@@ -69,7 +69,17 @@ export default function Home() {
       await api.post('/pets', petForm);
       toast.success('Pet added successfully!');
       setShowAddPet(false);
-      setPetForm({ name: '', species: '', breed: '', dob: '', photo_url: '' });
+      setPetForm({ 
+        name: '', 
+        species: '', 
+        breed: '', 
+        dob: '', 
+        photo_url: '',
+        microchip_id: '',
+        weight: '',
+        allergies: '',
+        health_conditions: ''
+      });
       loadData();
     } catch (error) {
       toast.error('Failed to add pet');
