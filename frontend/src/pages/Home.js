@@ -97,12 +97,40 @@ export default function Home() {
       toast.success('Journal entry added!');
       setShowAddJournal(false);
       setJournalForm({ pet_id: '', content: '', mood: '', date: format(new Date(), 'yyyy-MM-dd') });
+      loadData();
     } catch (error) {
       toast.error('Failed to add journal entry');
     }
   };
 
-  const todayActivities = activities.filter(a => a.date === format(new Date(), 'yyyy-MM-dd'));
+  // Get entries for selected date
+  const getEntriesForDate = (date) => {
+    const dateStr = format(date, 'yyyy-MM-dd');
+    const dayActivities = activities.filter(a => a.date === dateStr);
+    const dayHealth = healthRecords.filter(h => h.date === dateStr);
+    const dayJournal = journalEntries.filter(j => j.date === dateStr);
+    return { activities: dayActivities, health: dayHealth, journal: dayJournal };
+  };
+
+  // Check if a date has any entries
+  const dateHasEntries = (date) => {
+    const dateStr = format(date, 'yyyy-MM-dd');
+    return activities.some(a => a.date === dateStr) || 
+           healthRecords.some(h => h.date === dateStr) || 
+           journalEntries.some(j => j.date === dateStr);
+  };
+
+  // Get entry types for a date (for colored indicators)
+  const getDateEntryTypes = (date) => {
+    const dateStr = format(date, 'yyyy-MM-dd');
+    const types = [];
+    if (activities.some(a => a.date === dateStr)) types.push('activity');
+    if (healthRecords.some(h => h.date === dateStr)) types.push('health');
+    if (journalEntries.some(j => j.date === dateStr)) types.push('journal');
+    return types;
+  };
+
+  const selectedDateEntries = getEntriesForDate(selectedDate);
 
   if (loading) {
     return <div className="text-center py-12">Loading...</div>;
