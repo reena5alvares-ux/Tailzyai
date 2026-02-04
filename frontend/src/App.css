@@ -9,14 +9,16 @@
 
 /* Calendar styling */
 .rdp {
-  --rdp-cell-size: 52px;
+  --rdp-cell-size: 45px;
   --rdp-accent-color: hsl(12 90% 65%);
+  max-width: 380px;
 }
 
 /* Mobile calendar size */
 @media (max-width: 640px) {
   .rdp {
-    --rdp-cell-size: 36px;
+    --rdp-cell-size: 38px;
+    max-width: 320px;
   }
   
   .rdp-day {
@@ -26,6 +28,11 @@
   .rdp-caption {
     font-size: 0.875rem;
   }
+  
+  .rdp-nav_button {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .rdp-day {
@@ -34,6 +41,16 @@
 
 .rdp-months {
   justify-content: center;
+}
+
+/* Make calendar more compact */
+.rdp-month {
+  margin: 0;
+  width: 100%;
+}
+
+.rdp-table {
+  max-width: 100%;
 }
 
 .chat-scroll {
