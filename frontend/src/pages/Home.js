@@ -395,6 +395,19 @@ export default function Home() {
                     </form>
                   </DialogContent>
                 </Dialog>
+                {selectedPetId !== 'all' && (
+                  <Button 
+                    onClick={() => {
+                      const pet = getSelectedPet();
+                      if (pet) handleEditPet(pet);
+                    }}
+                    className="rounded-full bg-white hover:bg-muted border-2 border-orange-100 text-foreground h-10 px-4" 
+                    data-testid="edit-pet-header-button"
+                  >
+                    <Edit className="w-4 h-4 mr-2" />
+                    Edit Pet
+                  </Button>
+                )}
                 <Select value={selectedPetId} onValueChange={setSelectedPetId}>
                   <SelectTrigger className="w-48 rounded-full border-2 border-orange-100">
                     <SelectValue placeholder="Select pet" />
