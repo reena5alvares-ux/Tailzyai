@@ -10,11 +10,13 @@ import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar } from '../components/ui/calendar';
-import { format } from 'date-fns';
+import { format, isSameDay } from 'date-fns';
 
 export default function Home() {
   const [pets, setPets] = useState([]);
   const [activities, setActivities] = useState([]);
+  const [healthRecords, setHealthRecords] = useState([]);
+  const [journalEntries, setJournalEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddPet, setShowAddPet] = useState(false);
   const [showAddActivity, setShowAddActivity] = useState(false);
@@ -33,12 +35,16 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      const [petsRes, activitiesRes] = await Promise.all([
+      const [petsRes, activitiesRes, healthRes, journalRes] = await Promise.all([
         api.get('/pets'),
-        api.get('/activities')
+        api.get('/activities'),
+        api.get('/health-records'),
+        api.get('/journal')
       ]);
       setPets(petsRes.data);
       setActivities(activitiesRes.data);
+      setHealthRecords(healthRes.data);
+      setJournalEntries(journalRes.data);
     } catch (error) {
       toast.error('Failed to load data');
     } finally {
