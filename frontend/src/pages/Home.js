@@ -88,6 +88,46 @@ export default function Home() {
     }
   };
 
+  const handleEditPet = (pet) => {
+    setPetForm({
+      name: pet.name || '',
+      species: pet.species || '',
+      breed: pet.breed || '',
+      dob: pet.dob || '',
+      photo_url: pet.photo_url || '',
+      microchip_id: pet.microchip_id || '',
+      weight: pet.weight || '',
+      allergies: pet.allergies || '',
+      health_conditions: pet.health_conditions || ''
+    });
+    setEditingPetId(pet.id);
+    setShowEditPet(true);
+  };
+
+  const handleUpdatePet = async (e) => {
+    e.preventDefault();
+    try {
+      await api.put(`/pets/${editingPetId}`, petForm);
+      toast.success('Pet updated successfully!');
+      setShowEditPet(false);
+      setEditingPetId(null);
+      setPetForm({ 
+        name: '', 
+        species: '', 
+        breed: '', 
+        dob: '', 
+        photo_url: '',
+        microchip_id: '',
+        weight: '',
+        allergies: '',
+        health_conditions: ''
+      });
+      loadData();
+    } catch (error) {
+      toast.error('Failed to update pet');
+    }
+  };
+
   const handleAddActivity = async (e) => {
     e.preventDefault();
     try {
