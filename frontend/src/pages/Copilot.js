@@ -214,7 +214,7 @@ export default function Copilot() {
           </div>
           <h1 className="text-4xl lg:text-5xl font-heading font-bold text-foreground">Pet Care Copilot</h1>
         </div>
-        <p className="text-base lg:text-lg text-muted-foreground">Your AI assistant with complete access to your pet's health data</p>
+        <p className="text-base lg:text-lg text-muted-foreground">Your AI assistant with complete access to your pet&apos;s health data</p>
       </motion.div>
 
       <motion.div
@@ -232,7 +232,7 @@ export default function Copilot() {
                   </div>
                   <h3 className="text-2xl font-heading font-bold mb-3">Start a Conversation</h3>
                   <p className="text-muted-foreground mb-6">
-                    I have access to all your pet's data. Ask me about their health, activities, or get care advice!
+                    I have access to all your pet&apos;s data. Ask me about their health, activities, or get care advice!
                   </p>
                   <div className="space-y-3 text-sm">
                     {suggestions.map((suggestion, index) => (
