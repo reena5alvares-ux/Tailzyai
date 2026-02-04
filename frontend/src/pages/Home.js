@@ -596,16 +596,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
+            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 sm:p-8"
           >
-            <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="flex flex-row gap-4 sm:gap-8 items-start">
               {/* Calendar */}
-              <div className="flex-shrink-0">
-                <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
+              <div className="flex-shrink-0 flex-1">
+                <h3 className="text-lg sm:text-xl font-heading font-bold mb-4 flex items-center gap-2">
                   <CalendarIcon className="w-5 h-5 text-primary" />
-                  Calendar
+                  <span className="hidden sm:inline">Calendar</span>
                 </h3>
-                <div className="w-full max-w-[480px]">
+                <div className="w-full">
                   <Calendar
                   mode="single"
                   selected={selectedDate}
