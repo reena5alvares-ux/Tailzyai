@@ -205,58 +205,42 @@ export default function Home() {
 
       {pets.length > 0 && (
         <>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="lg:col-span-2 bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
-              data-testid="daily-snapshot"
-            >
-              <h2 className="text-3xl font-heading font-bold mb-6">Daily Snapshot</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {pets.map((pet) => (
-                  <div key={pet.id} className="bg-muted rounded-[1.5rem] p-6" data-testid={`pet-card-${pet.id}`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                        <span className="text-2xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-heading font-bold">{pet.name}</h3>
-                        <p className="text-sm text-muted-foreground capitalize">{pet.species} {pet.breed && `• ${pet.breed}`}</p>
-                      </div>
+          {/* Pets Overview */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
+          >
+            <h2 className="text-2xl font-heading font-bold mb-6">Your Pets</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pets.map((pet) => (
+                <div key={pet.id} className="bg-muted rounded-[1.5rem] p-4" data-testid={`pet-card-${pet.id}`}>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="text-xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold">{pet.name}</h3>
+                      <p className="text-xs text-muted-foreground capitalize">{pet.species} {pet.breed && `• ${pet.breed}`}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              {todayActivities.length > 0 && (
-                <div className="mt-8">
-                  <h3 className="text-xl font-heading font-bold mb-4">Today's Activities</h3>
-                  <div className="space-y-3">
-                    {todayActivities.map((activity) => (
-                      <div key={activity.id} className="bg-muted rounded-xl p-4" data-testid={`activity-${activity.id}`}>
-                        <div className="flex items-center gap-3">
-                          <ActivityIcon className="w-5 h-5 text-secondary" />
-                          <div className="flex-1">
-                            <p className="font-medium">{activity.description}</p>
-                            <p className="text-sm text-muted-foreground">{activity.type}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
-              )}
-            </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="space-y-6"
-            >
-              <div className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6">
+          {/* Calendar and Quick Actions Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Quick Actions */}
+              <div>
                 <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
-                <div className="space-y-3">
+                <div className="space-y-3">{/* Activity Dialog */}
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
                       <Button className="w-full justify-start rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
@@ -299,6 +283,7 @@ export default function Home() {
                     </DialogContent>
                   </Dialog>
 
+                  {/* Health Dialog */}
                   <Dialog open={showAddHealth} onOpenChange={setShowAddHealth}>
                     <DialogTrigger asChild>
                       <Button className="w-full justify-start rounded-full bg-primary hover:bg-primary/90 text-white h-12" data-testid="add-health-button">
@@ -341,6 +326,7 @@ export default function Home() {
                     </DialogContent>
                   </Dialog>
 
+                  {/* Journal Dialog */}
                   <Dialog open={showAddJournal} onOpenChange={setShowAddJournal}>
                     <DialogTrigger asChild>
                       <Button className="w-full justify-start rounded-full bg-accent hover:bg-accent/90 text-foreground h-12" data-testid="add-journal-button">
@@ -382,55 +368,11 @@ export default function Home() {
                       </form>
                     </DialogContent>
                   </Dialog>
-
-                  {pets.length === 0 && (
-                    <Dialog open={showAddPet} onOpenChange={setShowAddPet}>
-                      <DialogTrigger asChild>
-                        <Button className="w-full justify-start rounded-full bg-primary hover:bg-primary/90 text-white h-12">
-                          <Plus className="w-5 h-5 mr-2" />
-                          Add Pet
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="rounded-[2rem]">
-                        <DialogHeader>
-                          <DialogTitle className="font-heading text-2xl">Add New Pet</DialogTitle>
-                        </DialogHeader>
-                        <form onSubmit={handleAddPet} className="space-y-4">
-                          <div>
-                            <Label>Name</Label>
-                            <Input value={petForm.name} onChange={(e) => setPetForm({ ...petForm, name: e.target.value })} required className="rounded-2xl" />
-                          </div>
-                          <div>
-                            <Label>Species</Label>
-                            <Select value={petForm.species} onValueChange={(v) => setPetForm({ ...petForm, species: v })} required>
-                              <SelectTrigger className="rounded-2xl">
-                                <SelectValue placeholder="Select species" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="dog">Dog</SelectItem>
-                                <SelectItem value="cat">Cat</SelectItem>
-                                <SelectItem value="bird">Bird</SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div>
-                            <Label>Breed (Optional)</Label>
-                            <Input value={petForm.breed} onChange={(e) => setPetForm({ ...petForm, breed: e.target.value })} className="rounded-2xl" />
-                          </div>
-                          <div>
-                            <Label>Date of Birth (Optional)</Label>
-                            <Input type="date" value={petForm.dob} onChange={(e) => setPetForm({ ...petForm, dob: e.target.value })} className="rounded-2xl" />
-                          </div>
-                          <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 h-12">Add Pet</Button>
-                        </form>
-                      </DialogContent>
-                    </Dialog>
-                  )}
                 </div>
               </div>
 
-              <div className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6">
+              {/* Calendar */}
+              <div>
                 <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
                   <CalendarIcon className="w-5 h-5 text-primary" />
                   Calendar
@@ -439,11 +381,152 @@ export default function Home() {
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  className="rounded-xl"
+                  className="rounded-xl border-2 border-orange-100"
+                  modifiers={{
+                    hasEntries: (date) => dateHasEntries(date)
+                  }}
+                  modifiersStyles={{
+                    hasEntries: {
+                      position: 'relative',
+                      fontWeight: 'bold'
+                    }
+                  }}
+                  components={{
+                    DayContent: ({ date }) => {
+                      const entryTypes = getDateEntryTypes(date);
+                      return (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <span>{format(date, 'd')}</span>
+                          {entryTypes.length > 0 && (
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-0.5">
+                              {entryTypes.includes('activity') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                              )}
+                              {entryTypes.includes('health') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                              )}
+                              {entryTypes.includes('journal') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                  }}
                 />
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
+          {/* Daily Snapshot Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
+            data-testid="daily-snapshot"
+          >
+            <h2 className="text-2xl font-heading font-bold mb-6">
+              Daily Snapshot - {format(selectedDate, 'MMMM d, yyyy')}
+            </h2>
+
+            {selectedDateEntries.activities.length === 0 && 
+             selectedDateEntries.health.length === 0 && 
+             selectedDateEntries.journal.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="bg-muted/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CalendarIcon className="w-10 h-10 text-muted-foreground" />
+                </div>
+                <p className="text-muted-foreground">No entries for this date</p>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {/* Activities */}
+                {selectedDateEntries.activities.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-heading font-bold mb-3 flex items-center gap-2">
+                      <ActivityIcon className="w-5 h-5 text-secondary" />
+                      Activities
+                    </h3>
+                    <div className="space-y-3">
+                      {selectedDateEntries.activities.map((activity) => (
+                        <div key={activity.id} className="bg-secondary/10 rounded-xl p-4 border-2 border-secondary/20" data-testid={`activity-${activity.id}`}>
+                          <div className="flex items-start gap-3">
+                            <div className="bg-secondary/20 p-2 rounded-lg">
+                              <ActivityIcon className="w-4 h-4 text-secondary" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-medium text-foreground">{activity.description}</p>
+                              <p className="text-sm text-muted-foreground mt-1">{activity.type}</p>
+                              {activity.notes && (
+                                <p className="text-sm text-muted-foreground mt-2">{activity.notes}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Health Records */}
+                {selectedDateEntries.health.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-heading font-bold mb-3 flex items-center gap-2">
+                      <Stethoscope className="w-5 h-5 text-primary" />
+                      Health Records
+                    </h3>
+                    <div className="space-y-3">
+                      {selectedDateEntries.health.map((record) => (
+                        <div key={record.id} className="bg-primary/10 rounded-xl p-4 border-2 border-primary/20" data-testid={`health-${record.id}`}>
+                          <div className="flex items-start gap-3">
+                            <div className="bg-primary/20 p-2 rounded-lg">
+                              <Stethoscope className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-medium text-foreground">{record.description}</p>
+                              <p className="text-sm text-muted-foreground mt-1">{record.type}</p>
+                              {record.notes && (
+                                <p className="text-sm text-muted-foreground mt-2">{record.notes}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Journal Entries */}
+                {selectedDateEntries.journal.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-heading font-bold mb-3 flex items-center gap-2">
+                      <BookOpen className="w-5 h-5 text-accent" />
+                      Journal Entries
+                    </h3>
+                    <div className="space-y-3">
+                      {selectedDateEntries.journal.map((entry) => (
+                        <div key={entry.id} className="bg-accent/10 rounded-xl p-4 border-2 border-accent/20" data-testid={`journal-${entry.id}`}>
+                          <div className="flex items-start gap-3">
+                            <div className="bg-accent/20 p-2 rounded-lg">
+                              <BookOpen className="w-4 h-4 text-accent" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-foreground whitespace-pre-wrap">{entry.content}</p>
+                              {entry.mood && (
+                                <p className="text-sm text-muted-foreground mt-2">Mood: {entry.mood}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </motion.div>
         </>
       )}
     </div>
