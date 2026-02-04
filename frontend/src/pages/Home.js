@@ -502,15 +502,15 @@ export default function Home() {
                 {selectedDateEntries.journal.length > 0 && (
                   <div>
                     <h3 className="text-lg font-heading font-bold mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-accent" />
+                      <BookOpen className="w-5 h-5 text-blue-500" />
                       Journal Entries
                     </h3>
                     <div className="space-y-3">
                       {selectedDateEntries.journal.map((entry) => (
-                        <div key={entry.id} className="bg-accent/10 rounded-xl p-4 border-2 border-accent/20" data-testid={`journal-${entry.id}`}>
+                        <div key={entry.id} className="bg-blue-50 rounded-xl p-4 border-2 border-blue-200" data-testid={`journal-${entry.id}`}>
                           <div className="flex items-start gap-3">
-                            <div className="bg-accent/20 p-2 rounded-lg">
-                              <BookOpen className="w-4 h-4 text-accent" />
+                            <div className="bg-blue-100 p-2 rounded-lg">
+                              <BookOpen className="w-4 h-4 text-blue-500" />
                             </div>
                             <div className="flex-1">
                               <p className="text-foreground whitespace-pre-wrap">{entry.content}</p>
