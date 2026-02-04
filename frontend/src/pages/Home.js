@@ -336,17 +336,77 @@ export default function Home() {
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-heading font-bold">Pet Profile</h2>
-              <Select value={selectedPetId} onValueChange={setSelectedPetId}>
-                <SelectTrigger className="w-48 rounded-full border-2 border-orange-100">
-                  <SelectValue placeholder="Select pet" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Pets</SelectItem>
-                  {pets.map((pet) => (
-                    <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="flex items-center gap-3">
+                <Dialog open={showAddPet} onOpenChange={setShowAddPet}>
+                  <DialogTrigger asChild>
+                    <Button className="rounded-full bg-primary hover:bg-primary/90 text-white h-10 px-4" data-testid="add-pet-button">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Pet
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="rounded-[2rem] max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="font-heading text-2xl">Add New Pet</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleAddPet} className="space-y-4">
+                      <div>
+                        <Label>Name</Label>
+                        <Input value={petForm.name} onChange={(e) => setPetForm({ ...petForm, name: e.target.value })} required className="rounded-2xl" />
+                      </div>
+                      <div>
+                        <Label>Species</Label>
+                        <Select value={petForm.species} onValueChange={(v) => setPetForm({ ...petForm, species: v })} required>
+                          <SelectTrigger className="rounded-2xl">
+                            <SelectValue placeholder="Select species" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="dog">Dog</SelectItem>
+                            <SelectItem value="cat">Cat</SelectItem>
+                            <SelectItem value="bird">Bird</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label>Breed (Optional)</Label>
+                        <Input value={petForm.breed} onChange={(e) => setPetForm({ ...petForm, breed: e.target.value })} className="rounded-2xl" />
+                      </div>
+                      <div>
+                        <Label>Date of Birth (Optional)</Label>
+                        <Input type="date" value={petForm.dob} onChange={(e) => setPetForm({ ...petForm, dob: e.target.value })} className="rounded-2xl" />
+                      </div>
+                      <div>
+                        <Label>Microchip ID (Optional)</Label>
+                        <Input value={petForm.microchip_id} onChange={(e) => setPetForm({ ...petForm, microchip_id: e.target.value })} className="rounded-2xl" placeholder="e.g., 123456789012345" />
+                      </div>
+                      <div>
+                        <Label>Weight (Optional)</Label>
+                        <Input value={petForm.weight} onChange={(e) => setPetForm({ ...petForm, weight: e.target.value })} className="rounded-2xl" placeholder="e.g., 10 kg" />
+                      </div>
+                      <div>
+                        <Label>Allergies (Optional)</Label>
+                        <Input value={petForm.allergies} onChange={(e) => setPetForm({ ...petForm, allergies: e.target.value })} className="rounded-2xl" placeholder="e.g., Chicken, Dairy" />
+                      </div>
+                      <div>
+                        <Label>Health Conditions (Optional)</Label>
+                        <Textarea value={petForm.health_conditions} onChange={(e) => setPetForm({ ...petForm, health_conditions: e.target.value })} className="rounded-2xl" placeholder="Any ongoing health conditions" rows={2} />
+                      </div>
+                      <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 h-12">Add Pet</Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+                <Select value={selectedPetId} onValueChange={setSelectedPetId}>
+                  <SelectTrigger className="w-48 rounded-full border-2 border-orange-100">
+                    <SelectValue placeholder="Select pet" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Pets</SelectItem>
+                    {pets.map((pet) => (
+                      <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
             {selectedPetId === 'all' ? (
