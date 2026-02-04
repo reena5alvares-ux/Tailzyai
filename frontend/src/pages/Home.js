@@ -20,6 +20,8 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedPetId, setSelectedPetId] = useState('all');
   const [showAddPet, setShowAddPet] = useState(false);
+  const [showEditPet, setShowEditPet] = useState(false);
+  const [editingPetId, setEditingPetId] = useState(null);
   const [showAddActivity, setShowAddActivity] = useState(false);
   const [showAddHealth, setShowAddHealth] = useState(false);
   const [showAddJournal, setShowAddJournal] = useState(false);
