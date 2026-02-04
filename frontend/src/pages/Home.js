@@ -655,7 +655,7 @@ export default function Home() {
                             <SelectTrigger className="rounded-2xl">
                               <SelectValue placeholder="Select pet" />
                             </SelectTrigger>
-                            <SelectContent position="popper" className="z-[100]">
+                            <SelectContent position="popper" className="bg-white shadow-lg border-2">
                               {pets.map((pet) => (
                                 <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
                               ))}
@@ -698,7 +698,7 @@ export default function Home() {
                             <SelectTrigger className="rounded-2xl">
                               <SelectValue placeholder="Select pet" />
                             </SelectTrigger>
-                            <SelectContent position="popper" className="z-[100]">
+                            <SelectContent position="popper" className="bg-white shadow-lg border-2">
                               {pets.map((pet) => (
                                 <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
                               ))}
@@ -741,7 +741,7 @@ export default function Home() {
                             <SelectTrigger className="rounded-2xl">
                               <SelectValue placeholder="Select pet" />
                             </SelectTrigger>
-                            <SelectContent position="popper" className="z-[100]">
+                            <SelectContent position="popper" className="bg-white shadow-lg border-2">
                               {pets.map((pet) => (
                                 <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
                               ))}
