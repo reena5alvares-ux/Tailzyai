@@ -236,11 +236,10 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Quick Actions */}
-              <div>
-                <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
-                <div className="space-y-3">{/* Activity Dialog */}
+            {/* Quick Actions - Horizontal Layout */}
+            <div className="mb-8">
+              <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{/* Activity Dialog */}
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
                       <Button className="w-full justify-start rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
