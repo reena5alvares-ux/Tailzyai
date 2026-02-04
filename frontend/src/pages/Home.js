@@ -344,11 +344,12 @@ export default function Home() {
                       Add Pet
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="rounded-[2rem] max-h-[80vh] overflow-y-auto">
+                  <DialogContent className="rounded-[2rem] max-h-[80vh]">
                     <DialogHeader>
                       <DialogTitle className="font-heading text-2xl">Add New Pet</DialogTitle>
                     </DialogHeader>
-                    <form onSubmit={handleAddPet} className="space-y-4">
+                    <div className="overflow-y-auto max-h-[60vh]">
+                    <form onSubmit={handleAddPet} className="space-y-4 pr-2">
                       <div>
                         <Label>Name</Label>
                         <Input value={petForm.name} onChange={(e) => setPetForm({ ...petForm, name: e.target.value })} required className="rounded-2xl" />
