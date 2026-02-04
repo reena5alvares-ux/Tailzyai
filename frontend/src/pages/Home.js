@@ -415,7 +415,14 @@ export default function Home() {
                 {pets.map((pet) => {
                   const age = calculateAge(pet.dob);
                   return (
-                    <div key={pet.id} className="bg-muted rounded-[1.5rem] p-4" data-testid={`pet-card-${pet.id}`}>
+                    <div key={pet.id} className="bg-muted rounded-[1.5rem] p-4 relative" data-testid={`pet-card-${pet.id}`}>
+                      <button
+                        onClick={() => handleEditPet(pet)}
+                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-sm transition-colors"
+                        data-testid={`edit-pet-${pet.id}`}
+                      >
+                        <Edit className="w-4 h-4 text-primary" />
+                      </button>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                           <span className="text-xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
