@@ -54,6 +54,10 @@ class PetCreate(BaseModel):
     breed: Optional[str] = None
     dob: Optional[str] = None
     photo_url: Optional[str] = None
+    microchip_id: Optional[str] = None
+    weight: Optional[str] = None
+    allergies: Optional[str] = None
+    health_conditions: Optional[str] = None
 
 class Pet(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -63,6 +67,11 @@ class Pet(BaseModel):
     species: str
     breed: Optional[str] = None
     dob: Optional[str] = None
+    photo_url: Optional[str] = None
+    microchip_id: Optional[str] = None
+    weight: Optional[str] = None
+    allergies: Optional[str] = None
+    health_conditions: Optional[str] = None
     photo_url: Optional[str] = None
     created_at: str
 
