@@ -251,6 +251,22 @@ export default function Home() {
                   <Label>Date of Birth (Optional)</Label>
                   <Input type="date" value={petForm.dob} onChange={(e) => setPetForm({ ...petForm, dob: e.target.value })} className="rounded-2xl" />
                 </div>
+                <div>
+                  <Label>Microchip ID (Optional)</Label>
+                  <Input value={petForm.microchip_id} onChange={(e) => setPetForm({ ...petForm, microchip_id: e.target.value })} className="rounded-2xl" placeholder="e.g., 123456789012345" />
+                </div>
+                <div>
+                  <Label>Weight (Optional)</Label>
+                  <Input value={petForm.weight} onChange={(e) => setPetForm({ ...petForm, weight: e.target.value })} className="rounded-2xl" placeholder="e.g., 10 kg" />
+                </div>
+                <div>
+                  <Label>Allergies (Optional)</Label>
+                  <Input value={petForm.allergies} onChange={(e) => setPetForm({ ...petForm, allergies: e.target.value })} className="rounded-2xl" placeholder="e.g., Chicken, Dairy" />
+                </div>
+                <div>
+                  <Label>Health Conditions (Optional)</Label>
+                  <Textarea value={petForm.health_conditions} onChange={(e) => setPetForm({ ...petForm, health_conditions: e.target.value })} className="rounded-2xl" placeholder="Any ongoing health conditions" rows={2} />
+                </div>
                 <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 h-12" data-testid="submit-pet-button">Add Pet</Button>
               </form>
             </DialogContent>
