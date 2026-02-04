@@ -13,6 +13,21 @@
   --rdp-accent-color: hsl(12 90% 65%);
 }
 
+/* Mobile calendar size */
+@media (max-width: 640px) {
+  .rdp {
+    --rdp-cell-size: 36px;
+  }
+  
+  .rdp-day {
+    font-size: 0.875rem;
+  }
+  
+  .rdp-caption {
+    font-size: 0.875rem;
+  }
+}
+
 .rdp-day {
   font-size: 1rem;
 }
