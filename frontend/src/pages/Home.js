@@ -236,14 +236,15 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8">
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
               {/* Calendar */}
-              <div>
+              <div className="flex-shrink-0">
                 <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
                   <CalendarIcon className="w-5 h-5 text-primary" />
                   Calendar
                 </h3>
-                <Calendar
+                <div className="w-full max-w-[400px]">
+                  <Calendar
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
