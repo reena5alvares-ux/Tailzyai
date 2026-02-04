@@ -381,15 +381,15 @@ export default function Home() {
                         <Input value={petForm.microchip_id} onChange={(e) => setPetForm({ ...petForm, microchip_id: e.target.value })} className="rounded-2xl" placeholder="e.g., 123456789012345" />
                       </div>
                       <div>
-                        <Label>Weight (Optional)</Label>
+                        <Label>Weight</Label>
                         <Input value={petForm.weight} onChange={(e) => setPetForm({ ...petForm, weight: e.target.value })} className="rounded-2xl" placeholder="e.g., 10 kg" />
                       </div>
                       <div>
-                        <Label>Allergies (Optional)</Label>
+                        <Label>Allergies</Label>
                         <Input value={petForm.allergies} onChange={(e) => setPetForm({ ...petForm, allergies: e.target.value })} className="rounded-2xl" placeholder="e.g., Chicken, Dairy" />
                       </div>
                       <div>
-                        <Label>Health Conditions (Optional)</Label>
+                        <Label>Health Conditions</Label>
                         <Textarea value={petForm.health_conditions} onChange={(e) => setPetForm({ ...petForm, health_conditions: e.target.value })} className="rounded-2xl" placeholder="Any ongoing health conditions" rows={2} />
                       </div>
                       <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 h-12">Add Pet</Button>
