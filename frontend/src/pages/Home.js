@@ -332,9 +332,9 @@ export default function Home() {
                   {/* Health Dialog */}
                   <Dialog open={showAddHealth} onOpenChange={setShowAddHealth}>
                     <DialogTrigger asChild>
-                      <Button className="w-full justify-center rounded-full bg-primary hover:bg-primary/90 text-white h-12" data-testid="add-health-button">
+                      <Button className="w-40 justify-center rounded-full bg-primary hover:bg-primary/90 text-white h-12" data-testid="add-health-button">
                         <Stethoscope className="w-5 h-5 mr-2" />
-                        Add Health Record
+                        Health
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="rounded-[2rem]">
