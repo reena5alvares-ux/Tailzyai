@@ -577,6 +577,7 @@ export default function Home() {
                   </div>
                   <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 h-12">Update Pet</Button>
                 </form>
+                </div>
               </DialogContent>
             </Dialog>
           </motion.div>
