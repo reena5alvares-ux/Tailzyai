@@ -236,10 +236,57 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
           >
-            {/* Quick Actions - Horizontal Layout */}
-            <div className="mb-8">
-              <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{/* Activity Dialog */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8">
+              {/* Calendar */}
+              <div>
+                <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
+                  <CalendarIcon className="w-5 h-5 text-primary" />
+                  Calendar
+                </h3>
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  className="rounded-xl border-2 border-orange-100"
+                  modifiers={{
+                    hasEntries: (date) => dateHasEntries(date)
+                  }}
+                  modifiersStyles={{
+                    hasEntries: {
+                      position: 'relative',
+                      fontWeight: 'bold'
+                    }
+                  }}
+                  components={{
+                    DayContent: ({ date }) => {
+                      const entryTypes = getDateEntryTypes(date);
+                      return (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <span>{format(date, 'd')}</span>
+                          {entryTypes.length > 0 && (
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-0.5">
+                              {entryTypes.includes('activity') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                              )}
+                              {entryTypes.includes('health') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                              )}
+                              {entryTypes.includes('journal') && (
+                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                  }}
+                />
+              </div>
+
+              {/* Quick Actions - Vertical Layout on Right */}
+              <div className="flex flex-col justify-center">
+                <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
+                <div className="space-y-3">{/* Activity Dialog */}
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
                       <Button className="w-full justify-center rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
