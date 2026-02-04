@@ -11,18 +11,39 @@ export default function Copilot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingHistory, setLoadingHistory] = useState(true);
+  const [pets, setPets] = useState([]);
+  const [suggestionsIndex, setSuggestionsIndex] = useState(0);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
     loadHistory();
+    loadPets();
   }, []);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    // Rotate suggestions every 30 seconds
+    const interval = setInterval(() => {
+      setSuggestionsIndex((prev) => prev + 1);
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const loadPets = async () => {
+    try {
+      const response = await api.get('/pets');
+      setPets(response.data);
+    } catch (error) {
+      console.error('Failed to load pets');
+    }
+  };
   };
 
   const loadHistory = async () => {
