@@ -113,39 +113,125 @@ export default function Profile() {
         >
           <div className="flex items-center gap-3 mb-6">
             <Crown className="w-6 h-6 text-accent" />
-            <h3 className="text-2xl font-heading font-bold">Subscription Plan</h3>
+            <h3 className="text-2xl font-heading font-bold">Subscription Plans</h3>
           </div>
 
-          <div className="bg-muted rounded-xl p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h4 className="text-xl font-heading font-bold mb-1">Free Plan</h4>
-                <p className="text-sm text-muted-foreground">Perfect for getting started</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Free Plan */}
+            <div className="bg-gradient-to-br from-muted to-muted/50 rounded-2xl p-6 border-2 border-orange-100">
+              <div className="mb-4">
+                <div className="inline-block bg-primary/10 px-3 py-1 rounded-full mb-3">
+                  <span className="text-primary font-bold text-sm">Current Plan</span>
+                </div>
+                <h4 className="text-2xl font-heading font-bold mb-1">Free</h4>
+                <p className="text-3xl font-heading font-bold text-primary">$0<span className="text-sm text-muted-foreground font-normal">/month</span></p>
               </div>
-              <div className="bg-primary/10 px-4 py-2 rounded-full">
-                <span className="text-primary font-bold">Active</span>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm">1 pet</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm">10 MB storage</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm">Activity & health tracking</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm">Limited AI copilot</span>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <PawPrint className="w-4 h-4 text-secondary" />
-                <span>Unlimited pets</span>
+            {/* Monthly Plan */}
+            <div className="bg-gradient-to-br from-white to-orange-50 rounded-2xl p-6 border-2 border-primary shadow-lg relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold">
+                POPULAR
               </div>
-              <div className="flex items-center gap-2">
-                <PawPrint className="w-4 h-4 text-secondary" />
-                <span>Activity & health tracking</span>
+              <div className="mb-4">
+                <h4 className="text-2xl font-heading font-bold mb-1">Monthly</h4>
+                <p className="text-3xl font-heading font-bold text-primary">$9<span className="text-sm text-muted-foreground font-normal">/month</span></p>
               </div>
-              <div className="flex items-center gap-2">
-                <PawPrint className="w-4 h-4 text-secondary" />
-                <span>AI copilot assistance</span>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">10 pets</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">10 GB storage</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Unlimited tracking</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Full AI copilot access</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Priority support</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <PawPrint className="w-4 h-4 text-secondary" />
-                <span>Journal entries</span>
+
+              <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-white h-11">
+                Upgrade Now
+              </Button>
+            </div>
+
+            {/* Yearly Plan */}
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-6 border-2 border-blue-500 shadow-lg relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-xs font-bold">
+                BEST VALUE
               </div>
+              <div className="mb-4">
+                <h4 className="text-2xl font-heading font-bold mb-1">Yearly</h4>
+                <p className="text-3xl font-heading font-bold text-blue-600">$99<span className="text-sm text-muted-foreground font-normal">/year</span></p>
+                <p className="text-xs text-green-600 font-medium mt-1">Save $9 (8% off)</p>
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">10 pets</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">10 GB storage</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Unlimited tracking</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Fair use AI copilot*</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Priority support</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <PawPrint className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span className="text-sm font-medium">Early access features</span>
+                </div>
+              </div>
+
+              <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white h-11">
+                Upgrade Now
+              </Button>
             </div>
           </div>
+
+          <p className="text-xs text-muted-foreground mt-6 text-center italic">
+            * Fair use copilot tokens: Generous monthly allocation for AI queries. Contact support if you need more.
+          </p>
         </motion.div>
 
         {pets.length > 0 && (
