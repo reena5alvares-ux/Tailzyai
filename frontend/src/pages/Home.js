@@ -368,14 +368,15 @@ export default function Home() {
                     </DialogContent>
                   </Dialog>
                 </div>
-              </div>
+            </div>
 
-              {/* Calendar */}
-              <div>
-                <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
-                  <CalendarIcon className="w-5 h-5 text-primary" />
-                  Calendar
-                </h3>
+            {/* Calendar */}
+            <div>
+              <h3 className="text-xl font-heading font-bold mb-4 flex items-center gap-2">
+                <CalendarIcon className="w-5 h-5 text-primary" />
+                Calendar
+              </h3>
+              <div className="max-w-md mx-auto">
                 <Calendar
                   mode="single"
                   selected={selectedDate}
