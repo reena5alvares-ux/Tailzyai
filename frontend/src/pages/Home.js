@@ -282,12 +282,12 @@ export default function Home() {
                     }
                   }}
                 />
+                </div>
               </div>
 
               {/* Quick Actions - Vertical Layout on Right */}
-              <div className="flex flex-col justify-center">
-                <h3 className="text-xl font-heading font-bold mb-4">Quick Actions</h3>
-                <div className="space-y-3">{/* Activity Dialog */}
+              <div className="flex flex-col gap-3 lg:ml-8">
+                <h3 className="text-xl font-heading font-bold mb-1">Quick Actions</h3>
                   <Dialog open={showAddActivity} onOpenChange={setShowAddActivity}>
                     <DialogTrigger asChild>
                       <Button className="w-40 justify-center rounded-full bg-secondary hover:bg-secondary/90 text-white h-12" data-testid="add-activity-button">
