@@ -600,17 +600,17 @@ export default function Home() {
           >
             <div className="flex flex-row gap-4 sm:gap-8 items-start">
               {/* Calendar */}
-              <div className="flex-shrink-0 flex-1">
+              <div className="flex-shrink-0">
                 <h3 className="text-lg sm:text-xl font-heading font-bold mb-4 flex items-center gap-2">
                   <CalendarIcon className="w-5 h-5 text-primary" />
                   <span className="hidden sm:inline">Calendar</span>
                 </h3>
-                <div className="w-full">
+                <div className="w-full max-w-[320px] sm:max-w-[380px]">
                   <Calendar
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  className="rounded-xl border-2 border-orange-100 text-base"
+                  className="rounded-xl border-2 border-orange-100 text-base w-full"
                   modifiers={{
                     hasEntries: (date) => dateHasEntries(date)
                   }}
