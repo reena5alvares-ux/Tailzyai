@@ -738,9 +738,9 @@ export default function Home() {
                   {/* Journal Dialog */}
                   <Dialog open={showAddJournal} onOpenChange={setShowAddJournal}>
                     <DialogTrigger asChild>
-                      <Button className="w-40 justify-center rounded-full bg-blue-500 hover:bg-blue-600 text-white h-12" data-testid="add-journal-button">
-                        <BookOpen className="w-5 h-5 mr-2" />
-                        Journal
+                      <Button className="w-28 sm:w-40 justify-center rounded-full bg-blue-500 hover:bg-blue-600 text-white h-10 sm:h-12 text-sm" data-testid="add-journal-button">
+                        <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-2" />
+                        <span className="hidden sm:inline">Journal</span>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="rounded-[2rem]">
