@@ -114,24 +114,63 @@ export default function Home() {
     }
   };
 
-  // Get entries for selected date
+  // Helper functions for pet filtering
+  const getFilteredActivities = () => {
+    if (selectedPetId === 'all') return activities;
+    return activities.filter(a => a.pet_id === selectedPetId);
+  };
+
+  const getFilteredHealthRecords = () => {
+    if (selectedPetId === 'all') return healthRecords;
+    return healthRecords.filter(h => h.pet_id === selectedPetId);
+  };
+
+  const getFilteredJournalEntries = () => {
+    if (selectedPetId === 'all') return journalEntries;
+    return journalEntries.filter(j => j.pet_id === selectedPetId);
+  };
+
+  const getSelectedPet = () => {
+    if (selectedPetId === 'all') return null;
+    return pets.find(p => p.id === selectedPetId);
+  };
+
+  const calculateAge = (dob) => {
+    if (!dob) return null;
+    try {
+      const age = differenceInYears(new Date(), new Date(dob));
+      return age;
+    } catch {
+      return null;
+    }
+  };
+
+  // Get entries for selected date (filtered by selected pet)
   const getEntriesForDate = (date) => {
     const dateStr = format(date, 'yyyy-MM-dd');
-    const dayActivities = activities.filter(a => a.date === dateStr);
-    const dayHealth = healthRecords.filter(h => h.date === dateStr);
-    const dayJournal = journalEntries.filter(j => j.date === dateStr);
+    const filteredActivities = getFilteredActivities();
+    const filteredHealth = getFilteredHealthRecords();
+    const filteredJournal = getFilteredJournalEntries();
+    
+    const dayActivities = filteredActivities.filter(a => a.date === dateStr);
+    const dayHealth = filteredHealth.filter(h => h.date === dateStr);
+    const dayJournal = filteredJournal.filter(j => j.date === dateStr);
     return { activities: dayActivities, health: dayHealth, journal: dayJournal };
   };
 
-  // Check if a date has any entries
+  // Check if a date has any entries (filtered by selected pet)
   const dateHasEntries = (date) => {
     const dateStr = format(date, 'yyyy-MM-dd');
-    return activities.some(a => a.date === dateStr) || 
-           healthRecords.some(h => h.date === dateStr) || 
-           journalEntries.some(j => j.date === dateStr);
+    const filteredActivities = getFilteredActivities();
+    const filteredHealth = getFilteredHealthRecords();
+    const filteredJournal = getFilteredJournalEntries();
+    
+    return filteredActivities.some(a => a.date === dateStr) || 
+           filteredHealth.some(h => h.date === dateStr) || 
+           filteredJournal.some(j => j.date === dateStr);
   };
 
-  // Get entry types for a date (for colored indicators)
+  // Get entry types for a date (for colored indicators, filtered by selected pet)
   const getDateEntryTypes = (date) => {
     const dateStr = format(date, 'yyyy-MM-dd');
     const types = [];
