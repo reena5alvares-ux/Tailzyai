@@ -411,11 +411,10 @@ export default function Home() {
                           <Label>Date</Label>
                           <Input type="date" value={journalForm.date} onChange={(e) => setJournalForm({ ...journalForm, date: e.target.value })} required className="rounded-2xl" />
                         </div>
-                        <Button type="submit" className="w-full rounded-full bg-accent hover:bg-accent/90 h-12">Add Entry</Button>
+                        <Button type="submit" className="w-full rounded-full bg-blue-500 hover:bg-blue-600 h-12">Add Entry</Button>
                       </form>
                     </DialogContent>
                   </Dialog>
-                </div>
               </div>
             </div>
           </motion.div>
