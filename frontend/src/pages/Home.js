@@ -375,9 +375,9 @@ export default function Home() {
                   {/* Journal Dialog */}
                   <Dialog open={showAddJournal} onOpenChange={setShowAddJournal}>
                     <DialogTrigger asChild>
-                      <Button className="w-full justify-center rounded-full bg-accent hover:bg-accent/90 text-foreground h-12" data-testid="add-journal-button">
+                      <Button className="w-40 justify-center rounded-full bg-blue-500 hover:bg-blue-600 text-white h-12" data-testid="add-journal-button">
                         <BookOpen className="w-5 h-5 mr-2" />
-                        Add Journal Entry
+                        Journal
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="rounded-[2rem]">
