@@ -695,9 +695,9 @@ export default function Home() {
                   {/* Health Dialog */}
                   <Dialog open={showAddHealth} onOpenChange={setShowAddHealth}>
                     <DialogTrigger asChild>
-                      <Button className="w-40 justify-center rounded-full bg-primary hover:bg-primary/90 text-white h-12" data-testid="add-health-button">
-                        <Stethoscope className="w-5 h-5 mr-2" />
-                        Health
+                      <Button className="w-28 sm:w-40 justify-center rounded-full bg-primary hover:bg-primary/90 text-white h-10 sm:h-12 text-sm" data-testid="add-health-button">
+                        <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-2" />
+                        <span className="hidden sm:inline">Health</span>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="rounded-[2rem]">
