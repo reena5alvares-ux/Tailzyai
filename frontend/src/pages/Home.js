@@ -359,7 +359,7 @@ export default function Home() {
                           <SelectTrigger className="rounded-2xl">
                             <SelectValue placeholder="Select species" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent position="popper" className="z-[100]">
                             <SelectItem value="dog">Dog</SelectItem>
                             <SelectItem value="cat">Cat</SelectItem>
                             <SelectItem value="bird">Bird</SelectItem>
