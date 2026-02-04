@@ -171,12 +171,17 @@ export default function Home() {
   };
 
   // Get entry types for a date (for colored indicators, filtered by selected pet)
+  // Get entry types for a date (for colored indicators, filtered by selected pet)
   const getDateEntryTypes = (date) => {
     const dateStr = format(date, 'yyyy-MM-dd');
+    const filteredActivities = getFilteredActivities();
+    const filteredHealth = getFilteredHealthRecords();
+    const filteredJournal = getFilteredJournalEntries();
+    
     const types = [];
-    if (activities.some(a => a.date === dateStr)) types.push('activity');
-    if (healthRecords.some(h => h.date === dateStr)) types.push('health');
-    if (journalEntries.some(j => j.date === dateStr)) types.push('journal');
+    if (filteredActivities.some(a => a.date === dateStr)) types.push('activity');
+    if (filteredHealth.some(h => h.date === dateStr)) types.push('health');
+    if (filteredJournal.some(j => j.date === dateStr)) types.push('journal');
     return types;
   };
 
