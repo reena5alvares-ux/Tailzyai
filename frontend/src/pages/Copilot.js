@@ -236,28 +236,19 @@ export default function Copilot() {
                     I have access to all your pet's data. Ask me about their health, activities, or get care advice!
                   </p>
                   <div className="space-y-3 text-sm">
-                    <motion.div 
-                      whileHover={{ scale: 1.02, x: 4 }}
-                      className="bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-xl p-4 text-left border border-secondary/20 cursor-pointer"
-                    >
-                      <p className="font-medium text-foreground">💬 How is my pet's health trending?</p>
-                      <p className="text-xs text-muted-foreground mt-1">Get insights from health records</p>
-                    </motion.div>
-                    <motion.div 
-                      whileHover={{ scale: 1.02, x: 4 }}
-                      className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-4 text-left border border-primary/20 cursor-pointer"
-                    >
-                      <p className="font-medium text-foreground">💊 When was the last vaccination?</p>
-                      <p className="text-xs text-muted-foreground mt-1">Check vaccination schedule</p>
-                    </motion.div>
-                    <motion.div 
-                      whileHover={{ scale: 1.02, x: 4 }}
-                      className="bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-xl p-4 text-left border border-blue-500/20 cursor-pointer"
-                    >
-                      <p className="font-medium text-foreground">🏋️ Are they getting enough exercise?</p>
-                      <p className="text-xs text-muted-foreground mt-1">Analyze activity patterns</p>
-                    </motion.div>
+                    {suggestions.map((suggestion, index) => (
+                      <motion.div
+                        key={index}
+                        onClick={() => handleSuggestionClick(suggestion.question)}
+                        whileHover={{ scale: 1.02, x: 4 }}
+                        className={`bg-gradient-to-r ${suggestion.gradient} rounded-xl p-4 text-left border ${suggestion.border} cursor-pointer transition-all`}
+                      >
+                        <p className="font-medium text-foreground">{suggestion.icon} {suggestion.question}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{suggestion.subtitle}</p>
+                      </motion.div>
+                    ))}
                   </div>
+                  <p className="text-xs text-muted-foreground mt-4 italic">Suggestions refresh every 30 seconds</p>
                 </div>
               </div>
             )}
