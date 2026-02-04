@@ -527,11 +527,12 @@ export default function Home() {
 
             {/* Edit Pet Dialog */}
             <Dialog open={showEditPet} onOpenChange={setShowEditPet}>
-              <DialogContent className="rounded-[2rem] max-h-[80vh] overflow-y-auto">
+              <DialogContent className="rounded-[2rem] max-h-[80vh]">
                 <DialogHeader>
                   <DialogTitle className="font-heading text-2xl">Edit Pet</DialogTitle>
                 </DialogHeader>
-                <form onSubmit={handleUpdatePet} className="space-y-4">
+                <div className="overflow-y-auto max-h-[60vh]">
+                <form onSubmit={handleUpdatePet} className="space-y-4 pr-2">
                   <div>
                     <Label>Name</Label>
                     <Input value={petForm.name} onChange={(e) => setPetForm({ ...petForm, name: e.target.value })} required className="rounded-2xl" />
