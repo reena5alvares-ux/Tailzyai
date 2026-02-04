@@ -351,11 +351,11 @@ export default function Home() {
                     <div className="overflow-y-auto max-h-[60vh]">
                     <form onSubmit={handleAddPet} className="space-y-4 pr-2">
                       <div>
-                        <Label>Name</Label>
+                        <Label>Name <span className="text-red-500">*</span></Label>
                         <Input value={petForm.name} onChange={(e) => setPetForm({ ...petForm, name: e.target.value })} required className="rounded-2xl" />
                       </div>
                       <div>
-                        <Label>Species</Label>
+                        <Label>Species <span className="text-red-500">*</span></Label>
                         <Select value={petForm.species} onValueChange={(v) => setPetForm({ ...petForm, species: v })} required>
                           <SelectTrigger className="rounded-2xl">
                             <SelectValue placeholder="Select species" />
@@ -369,15 +369,15 @@ export default function Home() {
                         </Select>
                       </div>
                       <div>
-                        <Label>Breed (Optional)</Label>
+                        <Label>Breed</Label>
                         <Input value={petForm.breed} onChange={(e) => setPetForm({ ...petForm, breed: e.target.value })} className="rounded-2xl" />
                       </div>
                       <div>
-                        <Label>Date of Birth (Optional)</Label>
+                        <Label>Date of Birth</Label>
                         <Input type="date" value={petForm.dob} onChange={(e) => setPetForm({ ...petForm, dob: e.target.value })} className="rounded-2xl" />
                       </div>
                       <div>
-                        <Label>Microchip ID (Optional)</Label>
+                        <Label>Microchip ID</Label>
                         <Input value={petForm.microchip_id} onChange={(e) => setPetForm({ ...petForm, microchip_id: e.target.value })} className="rounded-2xl" placeholder="e.g., 123456789012345" />
                       </div>
                       <div>
