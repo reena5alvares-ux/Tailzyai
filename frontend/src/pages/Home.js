@@ -260,28 +260,120 @@ export default function Home() {
 
       {pets.length > 0 && (
         <>
-          {/* Pets Overview */}
+          {/* Pet Selection and Profile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
           >
-            <h2 className="text-2xl font-heading font-bold mb-6">Your Pets</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {pets.map((pet) => (
-                <div key={pet.id} className="bg-muted rounded-[1.5rem] p-4" data-testid={`pet-card-${pet.id}`}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                      <span className="text-xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-heading font-bold">Pet Profile</h2>
+              <Select value={selectedPetId} onValueChange={setSelectedPetId}>
+                <SelectTrigger className="w-48 rounded-full border-2 border-orange-100">
+                  <SelectValue placeholder="Select pet" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Pets</SelectItem>
+                  {pets.map((pet) => (
+                    <SelectItem key={pet.id} value={pet.id}>{pet.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {selectedPetId === 'all' ? (
+              /* Show all pets summary */
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {pets.map((pet) => {
+                  const age = calculateAge(pet.dob);
+                  return (
+                    <div key={pet.id} className="bg-muted rounded-[1.5rem] p-4" data-testid={`pet-card-${pet.id}`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                          <span className="text-xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-bold">{pet.name}</h3>
+                          <p className="text-xs text-muted-foreground capitalize">{pet.species} {pet.breed && `• ${pet.breed}`}</p>
+                        </div>
+                      </div>
+                      {age !== null && (
+                        <p className="text-sm text-muted-foreground">Age: {age} {age === 1 ? 'year' : 'years'}</p>
+                      )}
                     </div>
-                    <div>
-                      <h3 className="font-heading font-bold">{pet.name}</h3>
-                      <p className="text-xs text-muted-foreground capitalize">{pet.species} {pet.breed && `• ${pet.breed}`}</p>
+                  );
+                })}
+              </div>
+            ) : (
+              /* Show selected pet details */
+              (() => {
+                const pet = getSelectedPet();
+                if (!pet) return null;
+                const age = calculateAge(pet.dob);
+                
+                return (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                          <span className="text-4xl">{pet.species === 'dog' ? '🐕' : pet.species === 'cat' ? '🐈' : '🐾'}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-heading font-bold">{pet.name}</h3>
+                          <p className="text-muted-foreground capitalize">{pet.species} {pet.breed && `• ${pet.breed}`}</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-muted/50 rounded-xl p-3">
+                          <p className="text-xs text-muted-foreground mb-1">Species</p>
+                          <p className="font-medium capitalize">{pet.species}</p>
+                        </div>
+                        {pet.breed && (
+                          <div className="bg-muted/50 rounded-xl p-3">
+                            <p className="text-xs text-muted-foreground mb-1">Breed</p>
+                            <p className="font-medium">{pet.breed}</p>
+                          </div>
+                        )}
+                        {age !== null && (
+                          <div className="bg-muted/50 rounded-xl p-3">
+                            <p className="text-xs text-muted-foreground mb-1">Age</p>
+                            <p className="font-medium">{age} {age === 1 ? 'year' : 'years'}</p>
+                          </div>
+                        )}
+                        {pet.weight && (
+                          <div className="bg-muted/50 rounded-xl p-3">
+                            <p className="text-xs text-muted-foreground mb-1">Weight</p>
+                            <p className="font-medium">{pet.weight}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      {pet.microchip_id && (
+                        <div className="bg-muted/50 rounded-xl p-4">
+                          <p className="text-xs text-muted-foreground mb-1">Microchip ID</p>
+                          <p className="font-medium font-mono">{pet.microchip_id}</p>
+                        </div>
+                      )}
+                      {pet.allergies && (
+                        <div className="bg-muted/50 rounded-xl p-4">
+                          <p className="text-xs text-muted-foreground mb-1">Allergies</p>
+                          <p className="font-medium">{pet.allergies}</p>
+                        </div>
+                      )}
+                      {pet.health_conditions && (
+                        <div className="bg-muted/50 rounded-xl p-4">
+                          <p className="text-xs text-muted-foreground mb-1">Health Conditions</p>
+                          <p className="font-medium">{pet.health_conditions}</p>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                );
+              })()
+            )}
           </motion.div>
 
           {/* Calendar and Quick Actions Section */}
