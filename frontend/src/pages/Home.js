@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import api from '../utils/api';
 import { toast } from 'sonner';
-import { Plus, Activity as ActivityIcon, Heart, Stethoscope, BookOpen, Calendar as CalendarIcon, ChevronDown } from 'lucide-react';
+import { Plus, Activity as ActivityIcon, Heart, Stethoscope, BookOpen, Calendar as CalendarIcon, ChevronDown, Edit } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import { Input } from '../components/ui/input';
