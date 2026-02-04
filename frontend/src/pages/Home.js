@@ -540,7 +540,7 @@ export default function Home() {
                       <SelectTrigger className="rounded-2xl">
                         <SelectValue placeholder="Select species" />
                       </SelectTrigger>
-                      <SelectContent position="popper" className="z-[100]">
+                      <SelectContent position="popper" className="bg-white shadow-lg border-2">
                         <SelectItem value="dog">Dog</SelectItem>
                         <SelectItem value="cat">Cat</SelectItem>
                         <SelectItem value="bird">Bird</SelectItem>
