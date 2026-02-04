@@ -252,28 +252,63 @@ export default function Copilot() {
               </div>
             )}
 
-            {messages.map((msg, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className={`flex mb-4 ${
-                  msg.role === 'user' ? 'justify-end' : 'justify-start'
-                }`}
-                data-testid={`message-${msg.role}-${idx}`}
-              >
-                <div
-                  className={`max-w-[85%] rounded-[1.5rem] px-6 py-4 ${
-                    msg.role === 'user'
-                      ? 'bg-gradient-to-br from-primary to-primary/90 text-white shadow-[0_4px_16px_rgba(255,134,96,0.3)]'
-                      : 'bg-gradient-to-br from-white to-orange-50/30 border-2 border-orange-100/50 shadow-[0_4px_12px_rgba(0,0,0,0.04)]'
+            {messages.map((msg, idx) => {
+              // Generate follow-up suggestions for AI messages
+              const isLastMessage = idx === messages.length - 1;
+              const followUpSuggestions = msg.role === 'assistant' && isLastMessage ? [
+                "Tell me more details",
+                "What should I do next?",
+                "Any other recommendations?",
+                "Show me related records"
+              ] : [];
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className={`flex mb-4 ${
+                    msg.role === 'user' ? 'justify-end' : 'justify-start'
                   }`}
+                  data-testid={`message-${msg.role}-${idx}`}
                 >
-                  <p className="text-sm lg:text-base leading-relaxed whitespace-pre-wrap">{msg.content}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className={`max-w-[85%] ${msg.role === 'user' ? '' : 'w-full'}`}>
+                    <div
+                      className={`rounded-[1.5rem] px-6 py-4 ${
+                        msg.role === 'user'
+                          ? 'bg-gradient-to-br from-primary to-primary/90 text-white shadow-[0_4px_16px_rgba(255,134,96,0.3)]'
+                          : 'bg-gradient-to-br from-white to-orange-50/30 border-2 border-orange-100/50 shadow-[0_4px_12px_rgba(0,0,0,0.04)]'
+                      }`}
+                    >
+                      <p className="text-sm lg:text-base leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                    </div>
+                    
+                    {/* Follow-up suggestions for AI messages */}
+                    {followUpSuggestions.length > 0 && !loading && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex flex-wrap gap-2 mt-3 ml-2"
+                      >
+                        {followUpSuggestions.map((suggestion, sIdx) => (
+                          <motion.button
+                            key={sIdx}
+                            onClick={() => handleSuggestionClick(suggestion)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-4 py-2 bg-white border-2 border-orange-200 hover:border-primary hover:bg-primary/5 rounded-full text-sm text-foreground font-medium transition-colors shadow-sm"
+                          >
+                            {suggestion}
+                          </motion.button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
 
             {loading && (
               <motion.div
