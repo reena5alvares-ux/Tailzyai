@@ -417,30 +417,23 @@ export default function Home() {
                   </Dialog>
               </div>
             </div>
-          </motion.div>
 
-          {/* Daily Snapshot Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
-            data-testid="daily-snapshot"
-          >
-            <h2 className="text-2xl font-heading font-bold mb-6">
-              Daily Snapshot - {format(selectedDate, 'MMMM d, yyyy')}
-            </h2>
+            {/* Daily Snapshot Section - Merged into same block */}
+            <div className="mt-8 pt-8 border-t-2 border-orange-100">
+              <h2 className="text-2xl font-heading font-bold mb-6">
+                Daily Snapshot - {format(selectedDate, 'MMMM d, yyyy')}
+              </h2>
 
-            {selectedDateEntries.activities.length === 0 && 
-             selectedDateEntries.health.length === 0 && 
-             selectedDateEntries.journal.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="bg-muted/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CalendarIcon className="w-10 h-10 text-muted-foreground" />
+              {selectedDateEntries.activities.length === 0 && 
+               selectedDateEntries.health.length === 0 && 
+               selectedDateEntries.journal.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="bg-muted/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CalendarIcon className="w-10 h-10 text-muted-foreground" />
+                  </div>
+                  <p className="text-muted-foreground">No entries for this date</p>
                 </div>
-                <p className="text-muted-foreground">No entries for this date</p>
-              </div>
-            ) : (
+              ) : (
               <div className="space-y-6">
                 {/* Activities */}
                 {selectedDateEntries.activities.length > 0 && (
