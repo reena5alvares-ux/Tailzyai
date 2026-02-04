@@ -193,7 +193,7 @@ export default function Profile() {
               <div className="mb-4">
                 <h4 className="text-2xl font-heading font-bold mb-1">Yearly</h4>
                 <p className="text-3xl font-heading font-bold text-blue-600">$99<span className="text-sm text-muted-foreground font-normal">/year</span></p>
-                <p className="text-xs text-green-600 font-medium mt-1">Save $9 (8% off)</p>
+                <p className="text-xs text-green-600 font-bold mt-1">🎉 Buy 10 months, get 2 FREE!</p>
               </div>
               
               <div className="space-y-3 mb-6">
