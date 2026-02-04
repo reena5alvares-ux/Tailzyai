@@ -44,7 +44,6 @@ export default function Copilot() {
       console.error('Failed to load pets');
     }
   };
-  };
 
   const loadHistory = async () => {
     try {
