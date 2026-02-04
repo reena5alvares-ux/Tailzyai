@@ -328,12 +328,13 @@ export default function Home() {
 
       {pets.length > 0 && (
         <>
-          {/* Pet Selection and Profile */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Pet Selection and Profile */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-card rounded-[2rem] border-2 border-orange-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8"
+            >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-heading font-bold">Pet Profile</h2>
               <div className="flex items-center gap-3">
