@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import api from '../utils/api';
 import { toast } from 'sonner';
-import { Plus, Activity as ActivityIcon, Heart, Stethoscope, BookOpen, Calendar as CalendarIcon } from 'lucide-react';
+import { Plus, Activity as ActivityIcon, Heart, Stethoscope, BookOpen, Calendar as CalendarIcon, ChevronDown } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import { Input } from '../components/ui/input';
@@ -10,7 +10,7 @@ import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar } from '../components/ui/calendar';
-import { format, isSameDay } from 'date-fns';
+import { format, isSameDay, differenceInYears } from 'date-fns';
 
 export default function Home() {
   const [pets, setPets] = useState([]);
@@ -18,13 +18,24 @@ export default function Home() {
   const [healthRecords, setHealthRecords] = useState([]);
   const [journalEntries, setJournalEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedPetId, setSelectedPetId] = useState('all');
   const [showAddPet, setShowAddPet] = useState(false);
   const [showAddActivity, setShowAddActivity] = useState(false);
   const [showAddHealth, setShowAddHealth] = useState(false);
   const [showAddJournal, setShowAddJournal] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const [petForm, setPetForm] = useState({ name: '', species: '', breed: '', dob: '', photo_url: '' });
+  const [petForm, setPetForm] = useState({ 
+    name: '', 
+    species: '', 
+    breed: '', 
+    dob: '', 
+    photo_url: '',
+    microchip_id: '',
+    weight: '',
+    allergies: '',
+    health_conditions: ''
+  });
   const [activityForm, setActivityForm] = useState({ pet_id: '', type: '', description: '', date: format(new Date(), 'yyyy-MM-dd'), notes: '' });
   const [healthForm, setHealthForm] = useState({ pet_id: '', type: '', description: '', date: format(new Date(), 'yyyy-MM-dd'), notes: '' });
   const [journalForm, setJournalForm] = useState({ pet_id: '', content: '', mood: '', date: format(new Date(), 'yyyy-MM-dd') });
