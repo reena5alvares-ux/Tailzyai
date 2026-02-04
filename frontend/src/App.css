@@ -7,6 +7,20 @@
   pointer-events: none;
 }
 
+/* Calendar styling */
+.rdp {
+  --rdp-cell-size: 52px;
+  --rdp-accent-color: hsl(12 90% 65%);
+}
+
+.rdp-day {
+  font-size: 1rem;
+}
+
+.rdp-months {
+  justify-content: center;
+}
+
 .chat-scroll {
   overflow-y: auto;
   scrollbar-width: thin;
